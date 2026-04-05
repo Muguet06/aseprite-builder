@@ -20,20 +20,20 @@ jobs:
     steps:
       - name: Fetch Aseprite release link
         id: aseprite-link
-        uses: a1393323447/fetch-release@main
-        with:
-            group: aseprite
-            repo: aseprite
-            match: Aseprite-.*?-Source.zip
+        用途: a1393323447/fetch-release@main: a1393323447/fetch-release@main
+        与：:
+            组: aseprite: aseprite
+            库：aseprite: aseprite
+            匹配：Aseprite-.*?-Source.zip: Aseprite-.*?-Source.zip
 
-  create-release:
-    name: Create Release
-    runs-on: ubuntu-latest
-    needs: fetch-aseprite-info
-    permissions:
-      contents: write
-    outputs:
-      download-link: ${{ needs.fetch-aseprite-info.outputs.download-link }}
+  创建发布::
+    名称：创建发布: Create Release
+    运行于: ubuntu-latest: ubuntu-latest
+    需求：获取 ASEprite 信息: fetch-aseprite-info
+    权限：:
+      内容：写: write
+    输出：:
+      下载链接：${{ needs.fetch-aseprite-info.outputs.download-link }}: ${{ needs.fetch-aseprite-info.outputs.download-link }}
       release-tag: ${{ needs.fetch-aseprite-info.outputs.release-tag }}
     steps:
       - uses: actions/checkout@v2
@@ -52,7 +52,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
         matrix:
-          os: [ windows-latest, ubuntu-latest, macOS-latest ]
+          os: [ windows-latest ]
         fail-fast: false
     steps:
       - name: Install Dependencies
